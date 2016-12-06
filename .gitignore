@@ -1,0 +1,8 @@
+# Ignore swap files
+*.swp
+
+# Ignore doxyfile
+Doxyfile
+
+# Ignore test directory
+test/
