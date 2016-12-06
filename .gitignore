@@ -8,3 +8,5 @@ Doxyfile
 test/*
 build/*
 bin/*
+theory/*
+!theory/*.pdf
