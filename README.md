@@ -1,7 +1,7 @@
 # Numerical methods course
 ## Description
 Almost everyone nowdays are directly in contact with numerical methods, most of the time unknowingly. For me this course is to get better understanding for the fundamentals of numerical methods in computing. 
-The methods written here are not optimized and most likely not even near to professional level. 
+The methods written here are not optimized and most likely they are not even near to professional level. 
 
 ## Methods 
 Following methdos are preliminary planned to be studied, with an example of their uses.

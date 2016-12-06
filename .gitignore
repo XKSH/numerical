@@ -4,5 +4,7 @@
 # Ignore doxyfile
 Doxyfile
 
-# Ignore test directory
-test/
+# Ignore directories
+test/*
+build/*
+bin/*
