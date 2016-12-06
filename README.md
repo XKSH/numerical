@@ -5,26 +5,26 @@ Almost everyone nowdays are directly in contact with numerical methods, monst of
 ## Methods 
 Following methdos are preliminary planned to be studied, with an example of their uses.
 ### Root finding
-*Bisection
-*Secant
-*Relaxation
-*Newton-Rhapson
+* Bisection
+* Secant
+* Relaxation
+* Newton-Rhapson
 ### Linear algebra
-*Gauss
-*LU-decomposition
-*Relaxation
+* Gauss
+* LU-decomposition
+* Relaxation
 ### Derivative
-*Forward
-*Backward
-*Central
+* Forward
+* Backward
+* Central
 ### Integration
-*Rectangle
-*Trapezoid
-*Simpson
-*Monte-Carlo
+* Rectangle
+* Trapezoid
+* Simpson
+* Monte-Carlo
 ### Differential
-*Euler
-*Runge-Kutta
+* Euler
+* Runge-Kutta
 
 ## License
 All sources are released under the [MIT License]((http://www.opensource.org/licenses/MIT).
