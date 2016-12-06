@@ -49,7 +49,8 @@ double bisection(double (*f)(double), double a, double b, double tol, int maxIte
 		}else{
 			(*f)(a) < (*f)(b) ? b = mean : a = mean;
 		}
-		
+	
+		// New mean and next try for the root
 		mean = (a + b) / 2;
 		root = (*f)(mean);
 		iter++;

@@ -38,4 +38,4 @@ Following methdos are preliminary planned to be studied, with an example of thei
 * Runge-Kutta
 
 ## License
-All sources are released under the [MIT License]((http://www.opensource.org/licenses/MIT).
+All sources are released under the [MIT License](http://www.opensource.org/licenses/MIT).
