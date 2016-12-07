@@ -13,10 +13,10 @@ double f1(double x){
 	return x;
 }
 double f2(double x){
-	return x-1;
+	return -(x-1);
 }
 double f3(double x){
-	return x*x-2;
+	return -(x*x-2)+2*x;
 }
 
 /*! \brief Bisection root finding function

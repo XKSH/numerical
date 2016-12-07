@@ -9,4 +9,9 @@ test/*
 build/*
 bin/*
 theory/*
+html/*
+latex/*
+
+# But not pdfs in theory folder
 !theory/*.pdf
+
