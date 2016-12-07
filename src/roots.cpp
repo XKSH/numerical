@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
-#include "bisection.hpp"
+#include "roots.hpp"
 
 double f1(double x){
 	return x;
