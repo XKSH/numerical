@@ -44,11 +44,9 @@ double bisection(double (*f)(double), double a, double b, double tol, int maxIte
 		if (std::abs(root) <= tol){return mean;}	// Return mean if f(x) is inside tolerance
 	
 		// Change limits
-		if (root < 0.0){
-			(*f)(a) < (*f)(b) ? a = mean : b = mean;
-		}else{
-			(*f)(a) < (*f)(b) ? b = mean : a = mean;
-		}
+		// If limit sign(f(a)) equals sign(f(mean)), set mean to a
+		// else set mean to b
+		(*f)(mean)/std::abs((*f)(mean)) == (*f)(a)/std::abs((*f)(a)) ? a = mean : b = mean; 
 	
 		// New mean and next try for the root
 		mean = (a + b) / 2;

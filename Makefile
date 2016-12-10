@@ -2,8 +2,6 @@ CC=g++
 FLAGS=-Wall -Werror -std=c++14 -pedantic
 BUILD=./build
 BIN=./bin
-BUILD=./build
-BIN=./bin
 SRC=./src
 vpath %.cpp src:
 
