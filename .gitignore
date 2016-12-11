@@ -14,4 +14,5 @@ latex/*
 
 # But not pdfs in theory folder
 !theory/*.pdf
+!test/testcases.cpp
 

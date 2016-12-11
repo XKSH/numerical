@@ -3,15 +3,22 @@ FLAGS=-Wall -Werror -std=c++14 -pedantic
 BUILD=./build
 BIN=./bin
 SRC=./src
+TEST=./test
 vpath %.cpp src:
+vpath %.cpp test:
 
-default: roots
+#default: roots
 
 roots.o: roots.cpp
 	$(CC) -o $(BUILD)/roots.o -c $(SRC)/roots.cpp 
 
-roots: roots.o
-	$(CC) $(BUILD)/roots.o -o $(BIN)/roots
+#roots: roots.o
+#	$(CC) $(BUILD)/roots.o -o $(BIN)/roots
+
+test: testcases.cpp roots.o
+	$(CC) -o $(TEST)/test $(TEST)/testcases.cpp $(BUILD)/roots.o
+	./test/test
+
 
 
 .PHONY: clean

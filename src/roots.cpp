@@ -9,6 +9,7 @@
 #include <limits>
 #include "roots.hpp"
 
+/*
 double f1(double x){
 	return x;
 }
@@ -18,6 +19,7 @@ double f2(double x){
 double f3(double x){
 	return -(x*x-2)+2*x;
 }
+*/
 
 /*! \brief Bisection root finding function
  *  \param f Function to be evaluated
@@ -67,6 +69,8 @@ double bisection(double (*f)(double), double a, double b){
 	return bisection(f, a, b, 1e-6, 1e6);
 }
 
+/*
+
 int main(void){
 	std::cout << bisection(f1, 2, 3, 1e-6, 1e6) << std::endl;
 	std::cout << bisection(f2, -2, 5, 1e-6, 1e6) << std::endl;
@@ -80,3 +84,4 @@ int main(void){
 
 	return 0;
 }
+*/
