@@ -8,6 +8,7 @@
 #include <cmath>
 #include <limits>
 #include "roots.hpp"
+#include <cassert>
 
 /*
 double f1(double x){
@@ -32,14 +33,20 @@ double f3(double x){
 double bisection(double (*f)(double), double a, double b, double tol, int maxIteration){
 	
 	// Test if limits are correct
+	
+	assert(f(a)*f(b) <= 0);
+
+	/*
 	if ((*f)(a) * (*f)(b) > 0.0){
 		std::cerr << "ERROR: Limits have same signs! " << std::endl;
 		return -std::numeric_limits<double>::max();
 
 	}
+	*/
+	
 
 	double mean = {(a + b) / 2};	// Mean value of the domain
-	double root = {(*f)(mean)}; 	// First quess
+	double root = {f(mean)}; 	// First quess
 	int iter = {0};					// Set counter to 0;
 	
 	while(iter < maxIteration){
@@ -48,11 +55,11 @@ double bisection(double (*f)(double), double a, double b, double tol, int maxIte
 		// Change limits
 		// If limit sign(f(a)) equals sign(f(mean)), set mean to a
 		// else set mean to b
-		(*f)(mean)/std::abs((*f)(mean)) == (*f)(a)/std::abs((*f)(a)) ? a = mean : b = mean; 
+		f(mean)/std::abs(f(mean)) == f(a)/std::abs(f(a)) ? a = mean : b = mean; 
 	
 		// New mean and next try for the root
 		mean = (a + b) / 2;
-		root = (*f)(mean);
+		root = f(mean);
 		iter++;
 	}
 
@@ -69,19 +76,35 @@ double bisection(double (*f)(double), double a, double b){
 	return bisection(f, a, b, 1e-6, 1e6);
 }
 
-/*
 
-int main(void){
-	std::cout << bisection(f1, 2, 3, 1e-6, 1e6) << std::endl;
-	std::cout << bisection(f2, -2, 5, 1e-6, 1e6) << std::endl;
-	std::cout << bisection(f3, 0, 5, 1e-6, 1e6) << std::endl;
-	std::cout << bisection(f3, -5, 0, 1e-6, 1e6) << std::endl;
+/*! \brief Root finding by secant method
+ *	\param f Function which root is to be fid as pointer to function
+ *	\param x0 as first point as double
+ *	\param x1 as second point as double
+ *	\param tol Allowed tolerance as double
+ *	\param Maximum number of iterations as integer
+ */
 
-	std::cout << bisection(f1, 2, 3) << std::endl;
-	std::cout << bisection(f2, -2, 5) << std::endl;
-	std::cout << bisection(f3, 0, 5) << std::endl;
-	std::cout << bisection(f3, -5, 0) << std::endl;
-
-	return 0;
+double secant(double (*f)(double), double x0, double x1, double tol, int maxIteration){
+	double x2 = x1 - f(x1) * ((x1 - x0) / (f(x1) - f(x0)));
+	int iter = 0;
+	while (std::abs(f(x2)) > tol && iter < maxIteration){
+		x0 = x1;
+		x1 = x2;
+		x2 = x1 - f(x1) * ((x1- x0) / (f(x1) - f(x0)));
+		iter++;
+	}
+	return x2;
 }
-*/
+
+
+/*! \brief Root finding by secant methodwith default tole 1e-12 and maximum iterations 1e6
+ *	\param f Function which root is to be fid as pointer to function
+ *	\param x0 as first point as double
+ *	\param x1 as second point as double
+ */
+
+double secant(double (*f)(double), double x0, double x1){
+	return secant(f, x0, x1, 1e-12, 1e6);		
+}
+

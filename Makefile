@@ -9,7 +9,7 @@ vpath %.cpp test:
 
 #default: roots
 
-roots.o: roots.cpp
+roots.o: roots.cpp 
 	$(CC) -o $(BUILD)/roots.o -c $(SRC)/roots.cpp 
 
 #roots: roots.o
