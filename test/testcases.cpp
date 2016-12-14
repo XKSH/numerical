@@ -7,11 +7,22 @@
 #include "../src/roots.hpp"
 
 double f1(double x) { return x; } 		// Line with positive slope
+double df1(double x) { return 1; }
+
 double f2(double x) { return -x; } 		// Line with negative slope
+double df2(double x) { return -1; }
+
 double f3(double x) { return x*x; }		// Parabel
+double df3(double x) { return 2*x; }
+
 double f4(double x) { return x*x-2; }	// Roots +-sqrt(2)
+double df4(double x) { return 2*x; }
+
 double f5(double x) { return x*x*x*x-2*x*x+x;}	// Roots ~-1.618, 0 0.61803, 1
-double f6(double x) { return M_E * x+x*x*x*x*x*x*x*x-5*x;} // Root ~0.259177 ~1.12371
+double df5(double x) {return 4*x*x*x - 4*x + 1; }
+
+double f6(double x) { return std::pow( M_E, x) +x*x*x*x*x*x*x*x-5*x;} // Root ~0.259177 ~1.12371
+double df6(double x) { return std::pow(M_E, x) + 8*x*x*x*x*x*x*x - 5; }
 
 double eps = 1e-6;
 
@@ -51,6 +62,34 @@ BOOST_AUTO_TEST_CASE(Secant02){
 }
 
 BOOST_AUTO_TEST_CASE(relaxation01){
-	double root = relaxation(f4, 4.0, 0.02, 1e-6, 1e6);
+	double root = relaxation(f5, 4.0, 0.02, 1e-6, 1e6);
+	std::cout << root << std::endl;
+	root = relaxation(f5, -4.0, 0.02, 1e-6, 1e6);
+	std::cout << root << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(NR01){
+	double root = newton(f1, df1, 3, 1e-6, 1e6);
+	std::cout << " Root = 0 " << std::endl;
+	std::cout << root << std::endl;
+
+	std::cout << " Root = 0 " << std::endl;
+	root = newton(f2, df2, 3, 1e-6, 1e6);
+	std::cout << root << std::endl;
+	
+	std::cout << " Root = 0 " << std::endl;
+	root = newton(f3, df3,  3, 1e-6, 1e6);
+	std::cout << root << std::endl;
+	
+	std::cout << " Root = +-sqrt(2) " << std::endl;
+	root = newton(f4, df4,  3, 1e-6, 1e6);
+	std::cout << root << std::endl;
+
+	std::cout << " Root = +-sqrt(2) " << std::endl;
+	root = newton(f4, df4,  -3, 1e-6, 1e6);
+	std::cout << root << std::endl;
+
+	std::cout << " Root = ~-1.618, 0 0.61803, 1 " << std::endl;
+	root = newton(f5, df5,  -3, 1e-6, 1e6);
 	std::cout << root << std::endl;
 }

@@ -117,11 +117,28 @@ double secant(double (*f)(double), double x0, double x1){
  */
 double relaxation(double (*f)(double), double x, double r, double tol, int maxIteration){
 	int iter{0};
-	x = x - r * f(x);
+	//x = x - r * f(x);
 	while (std::abs(f(x)) > tol && iter < maxIteration){
-		x = x - r * (f(x));
+		x = x*r >= 0 ? x - r * (f(x)) : x + r*f(x);
 		//std::cout << x << ", " << iter << std::endl;
 		iter++;
+	}
+	return x;
+}
+
+/*! brief Root finding by relaxation with default tolerance 1e-6 and maximum iterations 1e6
+ *	\param f Function which root is to be find as pointer 
+ * 	\param x initial guess as double
+ * 	\param r as realxation constant as double
+ */
+double relaxation(double (*f)(double), double x, double r){
+	return relaxation(f,x,r,1e-6,1e6);
+}
+
+double newton(double (*f)(double), double (*df)(double), double x, double tol, int maxIteration){
+	int iter{0};
+	while (std::abs(f(x)) > tol && iter < maxIteration){
+		x = x - f(x) / df(x);
 	}
 	return x;
 }

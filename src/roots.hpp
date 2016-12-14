@@ -50,8 +50,25 @@ double secant(double (*f)(double), double x0, double x1);
  * 	\param maxIteration Maximum number of iterations as integer
  */
 
-double relaxation(double (*f)(double), double x, double r, double tol, int maxIterations);
+double relaxation(double (*f)(double), double x, double r, double tol, int maxIteration);
 
 
+/*! brief Root finding by relaxation
+ *	\param f Function which root is to be find as pointer 
+ * 	\param x initial guess as double
+ * 	\param r as realxation constant as double
+ */
+
+double relaxation(double (*f)(double), double x, double r, double tol, int maxIteration);
+
+/*! \brief Root finding by Newton-Rhapson method
+ *  \param f Function which toor is to find as pointer to function
+ *  \param df Deravative of function as pointer to function
+ *  \param x Initial guess as double
+ *  \param tol Allowed tolerance as double
+ *  \param maxIterations Maximum number of iterations as integer
+ */
+
+double newton(double (*f)(double), double(*df)(double), double x, double tol, int maxIteration);
 
 #endif
