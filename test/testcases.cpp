@@ -49,3 +49,8 @@ BOOST_AUTO_TEST_CASE(Secant02){
 	double root = secant(f3, -3, -2);
 	std::cout << root << std::endl;
 }
+
+BOOST_AUTO_TEST_CASE(relaxation01){
+	double root = relaxation(f4, 4.0, 0.02, 1e-6, 1e6);
+	std::cout << root << std::endl;
+}

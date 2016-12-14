@@ -10,13 +10,13 @@ vpath %.cpp test:
 #default: roots
 
 roots.o: roots.cpp 
-	$(CC) -o $(BUILD)/roots.o -c $(SRC)/roots.cpp 
+	$(CC) -o $(BUILD)/roots.o -c $(SRC)/roots.cpp $(FLAGS)
 
 #roots: roots.o
 #	$(CC) $(BUILD)/roots.o -o $(BIN)/roots
 
 test: testcases.cpp roots.o
-	$(CC) -o $(TEST)/test $(TEST)/testcases.cpp $(BUILD)/roots.o
+	$(CC) -o $(TEST)/test $(TEST)/testcases.cpp $(BUILD)/roots.o $(FLAGS)
 	./test/test
 
 
